@@ -151,7 +151,6 @@ class SmtpTransport(
                 authXoauth2Supported = saslMechanisms.contains("XOAUTH2")
                 authOAuthBearerSupported = saslMechanisms.contains("OAUTHBEARER")
             }
-            parseOptionalSizeValue(extensions["SIZE"])
 
             when (authType) {
                 AuthType.NONE -> {
@@ -197,6 +196,10 @@ class SmtpTransport(
                     }
                 }
             }
+            if (authType != AuthType.NONE) {
+                extensions = sendHello(SMTP_HELLO_NAME)
+            }
+            parseOptionalSizeValue(extensions["SIZE"])
         } catch (e: MessagingException) {
             close()
             throw e

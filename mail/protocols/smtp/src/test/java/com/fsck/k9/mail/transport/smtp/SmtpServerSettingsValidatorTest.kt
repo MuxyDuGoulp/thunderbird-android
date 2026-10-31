@@ -53,6 +53,9 @@ class SmtpServerSettingsValidatorTest {
             output("250 HELP")
             expect("AUTH PLAIN AHVzZXIAcGFzc3dvcmQ=")
             output("235 2.7.0 Authentication successful")
+            expect("EHLO " + SMTP_HELLO_NAME)
+            output("250-localhost Hello " + SMTP_HELLO_NAME)
+            output("250 OK")
             expect("QUIT")
             closeConnection()
         }
@@ -93,6 +96,9 @@ class SmtpServerSettingsValidatorTest {
             output("250 HELP")
             expect("AUTH OAUTHBEARER bixhPXVzZXIsAWF1dGg9QmVhcmVyIGF1dGgtdG9rZW4BAQ==")
             output("235 2.7.0 Authentication successful")
+            expect("EHLO " + SMTP_HELLO_NAME)
+            output("250-localhost Hello " + SMTP_HELLO_NAME)
+            output("250 OK")
             expect("QUIT")
             closeConnection()
         }
@@ -149,6 +155,9 @@ class SmtpServerSettingsValidatorTest {
 
             expect("AUTH XOAUTH2 $ouathBearer")
             output("235 2.7.0 Authentication successful")
+            expect("EHLO " + SMTP_HELLO_NAME)
+            output("250-localhost Hello " + SMTP_HELLO_NAME)
+            output("250 OK")
             expect("QUIT")
             closeConnection()
         }

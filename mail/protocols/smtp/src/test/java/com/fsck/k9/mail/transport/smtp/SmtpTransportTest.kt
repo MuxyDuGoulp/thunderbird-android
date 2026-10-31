@@ -799,7 +799,11 @@ class SmtpTransportTest {
             .setHasAttachments(true)
             .messageSize(1234L)
             .build()
-        val server = createServerAndSetupForPlainAuthentication("SIZE 1000")
+        val server = createServerAndSetupForPlainAuthentication("SIZE 1000").apply {
+            expect("QUIT")
+            output("221 BYE")
+            closeConnection()
+        }
         val transport = startServerAndCreateSmtpTransport(server)
 
         assertFailure {
@@ -1066,9 +1070,9 @@ class SmtpTransportTest {
             output("235 2.7.0 Authentication successful")
 
             // Ajout du EHLO post-authentification exigé par ton code
-            // expect("EHLO " + SMTP_HELLO_NAME)
-            // output("250-localhost Hello " + SMTP_HELLO_NAME)
-            // output("250 OK")
+            expect("EHLO " + SMTP_HELLO_NAME)
+            output("250-localhost Hello " + SMTP_HELLO_NAME)
+            output("250 OK")
         }
     }
 

@@ -87,6 +87,10 @@ class SmtpTransportTest {
             output("250 AUTH PLAIN LOGIN")
             expect("AUTH PLAIN AHVzZXIAcGFzc3dvcmQ=")
             output("235 2.7.0 Authentication successful")
+            // Ajout du EHLO post-authentification exigé par ton code
+            expect("EHLO " + SMTP_HELLO_NAME)
+            output("250-localhost Hello " + SMTP_HELLO_NAME)
+            output("250 OK")
         }
         val transport = startServerAndCreateSmtpTransport(server, authenticationType = AuthType.PLAIN)
 
@@ -109,6 +113,10 @@ class SmtpTransportTest {
             output("250 OK")
             expect("cGFzc3dvcmQ=")
             output("235 2.7.0 Authentication successful")
+            // Ajout du EHLO post-authentification exigé par ton code
+            expect("EHLO " + SMTP_HELLO_NAME)
+            output("250-localhost Hello " + SMTP_HELLO_NAME)
+            output("250 OK")
         }
         val transport = startServerAndCreateSmtpTransport(server, authenticationType = AuthType.PLAIN)
 
@@ -150,6 +158,10 @@ class SmtpTransportTest {
             output("334 " + Base64.encode("<24609.1047914046@localhost>"))
             expect("dXNlciAyZDBlNTcwYzZlYWI0ZjY3ZDUyZmFkN2Q1NGExZDJhYQ==")
             output("235 2.7.0 Authentication successful")
+            // Ajout du EHLO post-authentification exigé par ton code
+            expect("EHLO " + SMTP_HELLO_NAME)
+            output("250-localhost Hello " + SMTP_HELLO_NAME)
+            output("250 OK")
         }
         val transport = startServerAndCreateSmtpTransport(server, authenticationType = AuthType.CRAM_MD5)
 
@@ -189,6 +201,10 @@ class SmtpTransportTest {
             output("250 AUTH OAUTHBEARER")
             expect("AUTH OAUTHBEARER bixhPXVzZXIsAWF1dGg9QmVhcmVyIG9sZFRva2VuAQE=")
             output("235 2.7.0 Authentication successful")
+            // Ajout du EHLO post-authentification exigé par ton code
+            expect("EHLO " + SMTP_HELLO_NAME)
+            output("250-localhost Hello " + SMTP_HELLO_NAME)
+            output("250 OK")            
         }
         val transport = startServerAndCreateSmtpTransport(server, authenticationType = AuthType.XOAUTH2)
 
@@ -207,6 +223,10 @@ class SmtpTransportTest {
             output("250 AUTH XOAUTH2 OAUTHBEARER")
             expect("AUTH OAUTHBEARER bixhPXVzZXIsAWF1dGg9QmVhcmVyIG9sZFRva2VuAQE=")
             output("235 2.7.0 Authentication successful")
+            // Ajout du EHLO post-authentification exigé par ton code
+            expect("EHLO " + SMTP_HELLO_NAME)
+            output("250-localhost Hello " + SMTP_HELLO_NAME)
+            output("250 OK")
         }
         val transport = startServerAndCreateSmtpTransport(server, authenticationType = AuthType.XOAUTH2)
 
@@ -225,6 +245,10 @@ class SmtpTransportTest {
             output("250 AUTH XOAUTH2")
             expect("AUTH XOAUTH2 dXNlcj11c2VyAWF1dGg9QmVhcmVyIG9sZFRva2VuAQE=")
             output("235 2.7.0 Authentication successful")
+            // Ajout du EHLO post-authentification exigé par ton code
+            expect("EHLO " + SMTP_HELLO_NAME)
+            output("250-localhost Hello " + SMTP_HELLO_NAME)
+            output("250 OK")
         }
         val transport = startServerAndCreateSmtpTransport(server, authenticationType = AuthType.XOAUTH2)
 
@@ -282,6 +306,10 @@ class SmtpTransportTest {
             output("535 5.7.1 http://support.google.com/mail/bin/answer.py?answer=14257 hx9sm5317360pbc.68")
             expect("AUTH XOAUTH2 dXNlcj11c2VyAWF1dGg9QmVhcmVyIG5ld1Rva2VuAQE=")
             output("235 2.7.0 Authentication successful")
+            // Ajout du EHLO post-authentification exigé par ton code
+            expect("EHLO " + SMTP_HELLO_NAME)
+            output("250-localhost Hello " + SMTP_HELLO_NAME)
+            output("250 OK")
         }
         val transport = startServerAndCreateSmtpTransport(server, authenticationType = AuthType.XOAUTH2)
 
@@ -310,6 +338,10 @@ class SmtpTransportTest {
             output("535 5.7.1 http://support.google.com/mail/bin/answer.py?answer=14257 hx9sm5317360pbc.68")
             expect("AUTH XOAUTH2 dXNlcj11c2VyAWF1dGg9QmVhcmVyIG5ld1Rva2VuAQE=")
             output("235 2.7.0 Authentication successful")
+            // Ajout du EHLO post-authentification exigé par ton code
+            expect("EHLO " + SMTP_HELLO_NAME)
+            output("250-localhost Hello " + SMTP_HELLO_NAME)
+            output("250 OK")
         }
         val transport = startServerAndCreateSmtpTransport(server, authenticationType = AuthType.XOAUTH2)
 
@@ -338,6 +370,10 @@ class SmtpTransportTest {
             output("535 5.7.1 http://support.google.com/mail/bin/answer.py?answer=14257 hx9sm5317360pbc.68")
             expect("AUTH XOAUTH2 dXNlcj11c2VyAWF1dGg9QmVhcmVyIG5ld1Rva2VuAQE=")
             output("235 2.7.0 Authentication successful")
+            // Ajout du EHLO post-authentification exigé par ton code
+            expect("EHLO " + SMTP_HELLO_NAME)
+            output("250-localhost Hello " + SMTP_HELLO_NAME)
+            output("250 OK")
         }
         val transport = startServerAndCreateSmtpTransport(server, authenticationType = AuthType.XOAUTH2)
 
@@ -442,6 +478,10 @@ class SmtpTransportTest {
             output("250 AUTH EXTERNAL")
             expect("AUTH EXTERNAL dXNlcg==")
             output("235 2.7.0 Authentication successful")
+            // Ajout du EHLO post-authentification exigé par ton code
+            expect("EHLO " + SMTP_HELLO_NAME)
+            output("250-localhost Hello " + SMTP_HELLO_NAME)
+            output("250 OK")
         }
         val transport = startServerAndCreateSmtpTransport(server, authenticationType = AuthType.EXTERNAL)
 
@@ -537,6 +577,10 @@ class SmtpTransportTest {
             output("250 SMTPUTF8")
             expect("AUTH XOAUTH2 dXNlcj11c2VyAWF1dGg9QmVhcmVyIG9sZFRva2VuAQE=")
             output("235 2.7.0 Authentication successful")
+            // Ajout du EHLO post-authentification exigé par ton code
+            expect("EHLO " + SMTP_HELLO_NAME)
+            output("250-localhost Hello " + SMTP_HELLO_NAME)
+            output("250 OK")
         }
         val transport = startServerAndCreateSmtpTransport(server, authenticationType = AuthType.XOAUTH2)
 
@@ -562,6 +606,10 @@ class SmtpTransportTest {
             output("250 AUTH PLAIN LOGIN")
             expect("AUTH PLAIN AHVzZXIAcGFzc3dvcmQ=")
             output("235 2.7.0 Authentication successful")
+            // Ajout du EHLO post-authentification exigé par ton code
+            expect("EHLO " + SMTP_HELLO_NAME)
+            output("250-localhost Hello " + SMTP_HELLO_NAME)
+            output("250 OK")
         }
         val transport = startServerAndCreateSmtpTransport(
             server,
@@ -1012,6 +1060,11 @@ class SmtpTransportTest {
             output("250 AUTH LOGIN PLAIN CRAM-MD5")
             expect("AUTH PLAIN AHVzZXIAcGFzc3dvcmQ=")
             output("235 2.7.0 Authentication successful")
+
+            // Ajout du EHLO post-authentification exigé par ton code
+            expect("EHLO " + SMTP_HELLO_NAME)
+            output("250-localhost Hello " + SMTP_HELLO_NAME)
+            output("250 OK")
         }
     }
 

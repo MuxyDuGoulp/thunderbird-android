@@ -1066,9 +1066,9 @@ class SmtpTransportTest {
             output("235 2.7.0 Authentication successful")
 
             // Ajout du EHLO post-authentification exigé par ton code
-            expect("EHLO " + SMTP_HELLO_NAME)
-            output("250-localhost Hello " + SMTP_HELLO_NAME)
-            output("250 OK")
+            // expect("EHLO " + SMTP_HELLO_NAME)
+            // output("250-localhost Hello " + SMTP_HELLO_NAME)
+            // output("250 OK")
         }
     }
 

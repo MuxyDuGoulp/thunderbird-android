@@ -431,7 +431,10 @@ class SmtpTransportTest {
             expect("EHLO " + SMTP_HELLO_NAME)
             output("250-localhost Hello " + SMTP_HELLO_NAME)
             output("250 AUTH XOAUTH2")
-            expect("QUIT")
+            // Ton EHLO post-auth envoyé par le code
+            expect("EHLO " + SMTP_HELLO_NAME)
+            output("250-localhost Hello " + SMTP_HELLO_NAME)
+            output("250 OK")            expect("QUIT")
             output("221 BYE")
         }
         stubbing(oAuth2TokenProvider) {
